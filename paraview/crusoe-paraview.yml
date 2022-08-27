@@ -1,0 +1,10 @@
+---
+- name: Set up Paraview on Crusoe infrastructure
+  hosts: all
+  tasks:
+    - name: Deploy Paraview
+      ansible.builtin.unarchive:
+        src: https://www.paraview.org/files/v5.10/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64.tar.gz
+        dest: /tmp
+        remote_src: yes
+    

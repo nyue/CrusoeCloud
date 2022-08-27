@@ -1,0 +1,34 @@
+# Paraview remote rendering tests
+
+This assumes you have some familiarity with running Paraview and connecting to a remote server.
+
+![Paraview Server Configuration](images/ParaviewServerConfiguration.png)
+
+After spinning up an instance, the following steps can be executed to setup a running remote pvserver. This means you will know the \<crusoe-cloud-instance-ip\>
+
+Ensure that your local version of Paraview matches the remote version, otherwise, the remote rendering protocol may fail due to mismatch
+
+It is probably easier to have one console window for each step for easier monitoring
+
+## Run ansible script to download and install Paraview
+
+```
+ansible-playbook -u root --inventory <crusoe-cloud-instance-ip>, crusoe-paraview.yml
+```
+
+## Run pvserver remotely
+```
+ssh root@<crusoe-cloud-instance-ip> /tmp/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
+```
+
+## Tunnel into the instance to open up the pvserver port
+```
+ssh -N -L 11111:127.0.0.1:11111 root@<crusoe-cloud-instance-ip>
+```
+*NOTE*: This means that you can connect to the remote server via a local-host port rather than a remote-host port in the traditional way.
+
+## Monitor the remote CPU usage
+```
+sh root@<crusoe-cloud-instance-ip> -t top
+```
+
