@@ -11,3 +11,8 @@ export CRUSOE_CLOUD_INSTANCE_IP= <crusoe-cloud-instance-ip>
 ```
 ansible-playbook -u root --inventory $CRUSOE_CLOUD_INSTANCE_IP, crusoe-openfoam.yml
 ```
+
+## Resources
+
+https://openfoam.org/download/10-ubuntu/
+
