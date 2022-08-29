@@ -1,0 +1,6 @@
+---
+- name: Install OpenFOAM
+  hosts: all
+  tasks:
+    - name: Run OpenFOAM installation script
+      script: openfoam_installation.sh
