@@ -1,0 +1,9 @@
+---
+- name: Set up nvtop
+  hosts: all
+  tasks:
+    - name: Get nvtop source code
+      ansible.builtin.unarchive:
+        src: https://github.com/Syllo/nvtop/archive/refs/tags/2.0.3.tar.gz
+        dest: /tmp
+        remote_src: yes
