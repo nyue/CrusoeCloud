@@ -29,6 +29,9 @@ ansible-playbook -u root --inventory $CRUSOE_CLOUD_INSTANCE_IP, crusoe-paraview.
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /tmp/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
 ```
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP /tmp/ParaView-5.6.0-osmesa-MPI-Linux-64bit/bin/pvserver
+```
 
 ## Tunnel into the instance to open up the pvserver port
 ```
