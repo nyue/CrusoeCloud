@@ -4,3 +4,9 @@
   tasks:
     - name: Run OpenFOAM installation script
       script: openfoam_installation.sh
+    - name: Deploy Paraview 5.10.1
+      ansible.builtin.unarchive:
+        src: https://www.paraview.org/files/v5.10/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64.tar.gz
+        dest: /opt
+        remote_src: yes
+      
