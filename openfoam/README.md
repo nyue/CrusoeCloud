@@ -23,9 +23,11 @@ simpleFoam
 foamToVTK
 ```
 
+## Tunnel into the instance to open up the pvserver port
 ```
-ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/paraviewopenfoam56/bin/pvserver
+ssh -N -L 11111:127.0.0.1:11111 root@$CRUSOE_CLOUD_INSTANCE_IP
 ```
+
 
 ## Resources
 

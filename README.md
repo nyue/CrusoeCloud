@@ -5,3 +5,9 @@ This is a post SIGGRAPH 2022 evaluation of Crusoe Cloud. For all technical/busin
 
 This assumes that you already have an account with CrusoeCloud and have setup the required credentials.
 
+## Article writing
+
+xdotool search --class paraview behave %@ focus getwindowgeometry
+wmctrl -l
+
+

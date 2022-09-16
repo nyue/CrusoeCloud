@@ -26,9 +26,41 @@ ansible-playbook -u root --inventory $CRUSOE_CLOUD_INSTANCE_IP, crusoe-paraview.
 ```
 
 ## Run pvserver remotely
+
+### One GPU
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
 ```
+
+### Two GPU
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1
+```
+
+### Four GPU
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=2 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=3
+```
+
+### Eight GPU
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=2 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=3 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=4 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=5 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=6 : \
+    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=7
+```
+
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.6.0-osmesa-MPI-Linux-64bit/bin/pvserver
 ```
@@ -43,3 +75,8 @@ ssh -N -L 11111:127.0.0.1:11111 root@$CRUSOE_CLOUD_INSTANCE_IP
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP -t top
 ```
+
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP -t /opt/nvtop/bin/nvtop
+```
+

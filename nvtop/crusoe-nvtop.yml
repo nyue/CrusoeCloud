@@ -2,8 +2,5 @@
 - name: Set up nvtop
   hosts: all
   tasks:
-    - name: Get nvtop source code
-      ansible.builtin.unarchive:
-        src: https://github.com/Syllo/nvtop/archive/refs/tags/2.0.3.tar.gz
-        dest: /tmp
-        remote_src: yes
+    - name: Run OpenFOAM installation script
+      script: nvtop_installation.sh

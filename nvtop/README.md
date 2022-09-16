@@ -20,7 +20,7 @@ ansible-playbook -u root --inventory $CRUSOE_CLOUD_INSTANCE_IP, crusoe-nvtop.yml
 ```
 
 ```
-ssh root@$CRUSOE_CLOUD_INSTANCE_IP -t /tmp/build/src/nvtop
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP -t /opt/nvtop/bin/nvtop
 ```
 
 # apt install -y cmake libncurses5-dev libncursesw5-dev git
