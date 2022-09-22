@@ -39,6 +39,12 @@ ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-
     /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1
 ```
 
+```
+ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
+    VTK_DEFAULT_EGL_DEVICE_INDEX=0 /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    VTK_DEFAULT_EGL_DEVICE_INDEX=1 /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
+```
+
 ### Four GPU
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \

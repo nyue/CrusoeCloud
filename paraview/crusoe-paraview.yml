@@ -7,6 +7,11 @@
         src: https://www.paraview.org/files/v5.10/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64.tar.gz
         dest: /opt
         remote_src: yes
+    - name: Deploy Paraview 5.11.0-RC1
+      ansible.builtin.unarchive:
+        src: https://www.paraview.org/files/v5.11/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64.tar.gz
+        dest: /opt
+        remote_src: yes
     - name: Build and install nvtop
       script: nvtop_installation.sh
 
