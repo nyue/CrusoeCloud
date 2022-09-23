@@ -35,36 +35,30 @@ ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-
 ### Two GPU
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1
-```
-
-```
-ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
-    VTK_DEFAULT_EGL_DEVICE_INDEX=0 /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
-    VTK_DEFAULT_EGL_DEVICE_INDEX=1 /opt/ParaView-5.11.0-RC1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=0 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver  : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=1 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
 ```
 
 ### Four GPU
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=2 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=3
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=0 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=1 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=2 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=3 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
 ```
 
 ### Eight GPU
 ```
 ssh root@$CRUSOE_CLOUD_INSTANCE_IP /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/mpiexec \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=0 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=1 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=2 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=3 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=4 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=5 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=6 : \
-    /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver --displays --egl-device-index=7
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=0 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=1 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=2 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=3 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=4 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=5 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=6 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver : \
+    -env VTK_DEFAULT_EGL_DEVICE_INDEX=7 /opt/ParaView-5.10.1-egl-MPI-Linux-Python3.9-x86_64/bin/pvserver
 ```
 
 ```
