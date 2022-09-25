@@ -1,4 +1,5 @@
 ---
+# ./houdini.install --auto-install --accept-EULA 2021-10-13
 - name: Set up Houdini on Crusoe infrastructure
   hosts: all
   tasks:
@@ -6,13 +7,16 @@
       ansible.builtin.copy:
         src: sidefx.py
         dest: /tmp/sidefx.py
-    - name: execute houdini setup script
-      script: houdini_setup.py
-      register: script_output
-    - name: Houdini installation
-      script: houdini_installation.sh
+    - name: Upload houdini_setup.py
+      ansible.builtin.copy:
+        src: houdini_setup.py
+        dest: /tmp/houdini_setup.py
+    - name: Execute houdini setup script
       environment:
         SESI_CLIENT_SECRET_KEY: '{{ lookup("env", "SESI_CLIENT_SECRET_KEY") }}'
         SESI_CLIENT_ID: '{{ lookup("env", "SESI_CLIENT_ID") }}'
-    - debug:
-          var: script_output
+      command: python3 /tmp/houdini_setup.py
+      register: script_output
+    - name: Debug output
+      debug:
+        var: script_output
