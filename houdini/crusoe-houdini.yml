@@ -1,0 +1,18 @@
+---
+- name: Set up Houdini on Crusoe infrastructure
+  hosts: all
+  tasks:
+    - name: Upload sidefx.py
+      ansible.builtin.copy:
+        src: sidefx.py
+        dest: /tmp/sidefx.py
+    - name: execute houdini setup script
+      script: houdini_setup.py
+      register: script_output
+    - name: Houdini installation
+      script: houdini_installation.sh
+      environment:
+        SESI_CLIENT_SECRET_KEY: '{{ lookup("env", "SESI_CLIENT_SECRET_KEY") }}'
+        SESI_CLIENT_ID: '{{ lookup("env", "SESI_CLIENT_ID") }}'
+    - debug:
+          var: script_output

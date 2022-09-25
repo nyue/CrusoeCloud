@@ -1,0 +1,13 @@
+---
+- name: Run python script
+  hosts: all
+  tasks:
+    - name: Upload simple_script.py
+      ansible.builtin.copy:
+        src: simple_script.py
+        dest: /tmp/simple_script.py
+    - name: Execute simple python script
+      command: python3 /tmp/simple_script.py
+      register: script_output
+    - debug:
+          var: script_output
