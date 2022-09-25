@@ -1,0 +1,8 @@
+{
+     "files.exclude": {
+          "**/dev_venv/": true
+     },
+     "files.watcherExclude": {
+          "**/dev_venv/": true
+     }
+}
