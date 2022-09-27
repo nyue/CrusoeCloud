@@ -7,6 +7,10 @@
       ansible.builtin.copy:
         src: sidefx.py
         dest: /tmp/sidefx.py
+    - name: Upload henv.py
+      ansible.builtin.copy:
+        src: henv.py
+        dest: /tmp/henv.py
     - name: Upload houdini_setup.py
       ansible.builtin.copy:
         src: houdini_setup.py

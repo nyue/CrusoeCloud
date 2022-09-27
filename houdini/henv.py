@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 
 
 class HoudiniEnvironment:
@@ -8,10 +9,11 @@ class HoudiniEnvironment:
         self._hfs = HFS
         self._cwd = os.getcwd()
 
-    def run_command(self, command: str, command_args: str = ''):
+    def run_command(self, command: str, command_args: list = []):
         #  /bin/bash -c 'pushd /opt/sesi/hfs19.5.303 && source houdini_setup && sesictrl print-license'
+        _args = ' '.join(command_args)
         _cmd = 'pushd {HFS} && source houdini_setup && {cmd} {args}'.format(
-            HFS=self._hfs, cmd=command, args=command_args)
+            HFS=self._hfs, cmd=command, args=_args)
         cmd = ['/bin/bash', '-c', _cmd]
         process = subprocess.run(cmd,
                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -23,10 +25,11 @@ class HoudiniEnvironment:
         pass
 
 
-def main():
-    h = HoudiniEnvironment(HFS='/opt/sesi/hfs19.5.303')
-    h.run_command(command='sesictrl', command_args='print-license')
+def main(HFS: str):
+    h = HoudiniEnvironment(HFS=HFS)
+    h.run_command(command='sesictrl', command_args=['print-license'])
 
 
 if __name__ == '__main__':
-    main()
+    HFS = sys.argv[1]
+    main(HFS)

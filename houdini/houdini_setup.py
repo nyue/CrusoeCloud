@@ -6,7 +6,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(__file__))
 import sidefx
-
+import henv
 
 # print('python SESI_CLIENT_SECRET_KEY = {}'.format(os.environ['SESI_CLIENT_SECRET_KEY']))
 # print('python SESI_CLIENT_ID = {}'.format(os.environ['SESI_CLIENT_ID']))
@@ -70,3 +70,15 @@ if __name__ == '__main__':
     cmd = ['./houdini.install','--auto-install', '--accept-EULA', '2021-10-13']
     cwd = os.path.join('/tmp',basename)
     subprocess.run(cmd,cwd=cwd)
+
+    # Setup licensing
+    HFS = os.path.join('/opt','hfs{v}'.format(v=target_version))
+    hserver_path = os.path.join(HFS,'houdini','hserver.ini')
+    with open(hserver_path,'w') as fp:
+        fp.write('APIKey = {url} {client_id} {client_secret}\n'.format(url='www.sidefx.com',client_id=os.environ['SESI_CLIENT_ID'],client_secret=os.environ['SESI_CLIENT_SECRET_KEY']))
+
+    ## Start hserver
+    h = henv.HoudiniEnvironment(HFS)
+    h.run_command(command='hserver')
+    h.run_command(command='hserver', command_args=['-S','"https://www.sidefx.com/license/sesinetd"'])
+    h.run_command(command='sesictrl', command_args=['print-license'])
